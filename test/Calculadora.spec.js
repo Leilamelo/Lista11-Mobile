@@ -22,11 +22,9 @@ describe('Calculadora, 4 operações', () => {
     const operadorIgual = await driver.$("accessibility id:equals");
     await operadorIgual.click();
 
-    const resultado = await driver.$("id:com.android.calculator2:id/result");
-    await resultado.click();
-    const visor = await driver.$("accessibility id:clear");
-    await visor.click();
-
+    const resultado = await (await driver.$("id:com.android.calculator2:id/result")).getText();
+    expect(resultado).toBe("65"); // 27 + 38 = 65
+    const visor = await driver.$("accessibility id:clear").click();
   })
 
   it("Subtação", async () => {
@@ -43,10 +41,9 @@ describe('Calculadora, 4 operações', () => {
     const operadorIgual = await driver.$("accessibility id:equals");
     await operadorIgual.click();
 
-    const resultado = await driver.$("id:com.android.calculator2:id/result");
-    await resultado.click();
-    const visor = await driver.$("accessibility id:clear");
-    await visor.click();
+    const resultado = await (await driver.$("id:com.android.calculator2:id/result")).getText();
+    expect(resultado).toBe("57"); // 72 - 15 = 57
+    const visor = await driver.$("accessibility id:clear").click();
   })
 
   it("Multiplicação", async () => {
@@ -61,10 +58,9 @@ describe('Calculadora, 4 operações', () => {
     const operadorIgual = await driver.$("accessibility id:equals");
     await operadorIgual.click();
 
-    const resultado = await driver.$("id:com.android.calculator2:id/result");
-    await resultado.click();
-    const visor = await driver.$("accessibility id:clear");
-    await visor.click();
+    const resultado = await (await driver.$("id:com.android.calculator2:id/result")).getText();
+    expect(resultado).toBe("182"); // 26 * 7 = 182
+    const visor = await driver.$("accessibility id:clear").click();
   })
 
   it("Divisão", async () => {
@@ -79,9 +75,9 @@ describe('Calculadora, 4 operações', () => {
     const operadorIgual = await driver.$("accessibility id:equals");
     await operadorIgual.click();
 
-    const resultado = await driver.$("id:com.android.calculator2:id/result");
-    await resultado.click();
-    const visor = await driver.$("accessibility id:clear");
-    await visor.click();
+
+    const resultado = await (await driver.$("id:com.android.calculator2:id/result")).getText();
+    expect(resultado).toBe("23"); // 69 / 3 = 23
+    const visor = await driver.$("accessibility id:clear").click();
   })
 })
